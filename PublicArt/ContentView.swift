@@ -33,8 +33,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    let disciplines = ["statue", "mural", "plaque"]
     var body: some View {
-        Text("Hello World")
+        NavigationStack {
+            List(disciplines, id: \.self) { discipline in
+                Text(discipline)
+            }
+            .navigationDestination(for: String.self, destination: { discipline in
+                DetailView(discipline: discipline)
+            })
+            .navigationBarTitle("Disciplines")
+        }
+    }
+}
+
+struct DetailView: View {
+    let discipline: String
+    var body: some View {
+        Text(discipline)
+            .navigationBarTitle(Text(discipline), displayMode: .inline)
     }
 }
 

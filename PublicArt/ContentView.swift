@@ -33,25 +33,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    let disciplines = ["statue", "mural", "plaque"]
+    let artworks = artData
     var body: some View {
         NavigationStack {
-            List(disciplines, id: \.self) { discipline in
-                Text(discipline)
+            List(artworks) { artwork in
+                Text(artwork.title)
             }
-            .navigationDestination(for: String.self, destination: { discipline in
-                DetailView(discipline: discipline)
+            .navigationDestination(for: Artwork.self, destination: { artwork in
+                DetailView(artwork: artwork)
             })
-            .navigationBarTitle("Disciplines")
+            .navigationBarTitle("Artworks")
         }
     }
 }
 
 struct DetailView: View {
-    let discipline: String
+    let artwork: Artwork
+
     var body: some View {
-        Text(discipline)
-            .navigationBarTitle(Text(discipline), displayMode: .inline)
+        Text(artwork.title)
+            .navigationBarTitle(Text(artwork.title), displayMode: .inline)
     }
 }
 

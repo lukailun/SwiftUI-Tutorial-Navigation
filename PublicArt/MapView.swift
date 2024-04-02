@@ -30,32 +30,32 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
 import MapKit
+import SwiftUI
 
 struct MapView: UIViewRepresentable {
-  var coordinate: CLLocationCoordinate2D
+    var coordinate: CLLocationCoordinate2D
 
-  func makeUIView(context: Context) -> MKMapView {
-    MKMapView(frame: .zero)
-  }
+    func makeUIView(context _: Context) -> MKMapView {
+        MKMapView(frame: .zero)
+    }
 
-  func updateUIView(_ view: MKMapView, context: Context) {
-    let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-    let region = MKCoordinateRegion(center: coordinate, span: span)
+    func updateUIView(_ view: MKMapView, context _: Context) {
+        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
 
-    // Added annotation for PublicArt project
-    let annotation = MKPointAnnotation()
-    annotation.coordinate = coordinate
-    view.addAnnotation(annotation)
+        // Added annotation for PublicArt project
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        view.addAnnotation(annotation)
 
-    view.setRegion(region, animated: true)
-  }
+        view.setRegion(region, animated: true)
+    }
 }
 
 struct MapView_Previews: PreviewProvider {
-  static var previews: some View {
-    // Using Artwork object instead of Landmark
-    MapView(coordinate: artData[5].coordinate)
-  }
+    static var previews: some View {
+        // Using Artwork object instead of Landmark
+        MapView(coordinate: artData[5].coordinate)
+    }
 }

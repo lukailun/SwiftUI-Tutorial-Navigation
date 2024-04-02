@@ -14,6 +14,7 @@
 		483763FE29FC216D0052BB18 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483763F929FC216D0052BB18 /* Artwork.swift */; };
 		4837640329FC23160052BB18 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4837640229FC23160052BB18 /* AppMain.swift */; };
 		48EA5FB429FC253900633322 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EA5FB329FC253900633322 /* ContentView.swift */; };
+		5A6CFF112BBC4D8D006587E1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CFF102BBC4D8D006587E1 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		483763F929FC216D0052BB18 /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		4837640229FC23160052BB18 /* AppMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		48EA5FB329FC253900633322 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5A6CFF102BBC4D8D006587E1 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +62,13 @@
 		18D775BF22AD944300AE281E /* PublicArt */ = {
 			isa = PBXGroup;
 			children = (
+				18D775CE22AD944400AE281E /* Info.plist */,
 				4837640229FC23160052BB18 /* AppMain.swift */,
 				483763F929FC216D0052BB18 /* Artwork.swift */,
 				48EA5FB329FC253900633322 /* ContentView.swift */,
+				5A6CFF102BBC4D8D006587E1 /* DetailView.swift */,
 				483763F829FC216D0052BB18 /* MapView.swift */,
 				18D775C622AD944400AE281E /* Assets.xcassets */,
-				18D775CE22AD944400AE281E /* Info.plist */,
 				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
 				18D775C822AD944400AE281E /* Preview Content */,
 			);
@@ -178,6 +181,7 @@
 				483763FD29FC216D0052BB18 /* MapView.swift in Sources */,
 				483763FE29FC216D0052BB18 /* Artwork.swift in Sources */,
 				48EA5FB429FC253900633322 /* ContentView.swift in Sources */,
+				5A6CFF112BBC4D8D006587E1 /* DetailView.swift in Sources */,
 				4837640329FC23160052BB18 /* AppMain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

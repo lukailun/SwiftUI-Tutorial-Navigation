@@ -1,4 +1,4 @@
-/// Copyright (c) 2023 Kodeco Inc.
+/// Copyright (c) 2024 Kodeco Inc.
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -32,59 +32,35 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @State private var hideVisited = false
-    @State var artworks = artData
-
-    var showArt: [Artwork] {
-        hideVisited ? artworks.filter { $0.reaction.isEmpty } : artworks
-    }
+struct DetailView: View {
+    let artwork: Artwork
 
     var body: some View {
-        NavigationStack {
-            List(showArt) { artwork in
-                Text("\(artwork.reaction) \(artwork.title)")
-                    .contextMenu {
-                        Button("Love it: 💕") {
-                            self.setReaction("💕", for: artwork)
-                        }
-                        Button("Thoughtful: 🙏") {
-                            self.setReaction("🙏", for: artwork)
-                        }
-                        Button("Wow!: 🌟") {
-                            self.setReaction("🌟", for: artwork)
-                        }
-                    }
-            }
-            .navigationDestination(for: Artwork.self, destination: { artwork in
-                DetailView(artwork: artwork)
-            })
-            .navigationBarTitle("Artworks")
-            .navigationBarItems(
-                trailing: Toggle(isOn: $hideVisited) { Text("Hide Visited") })
+        VStack {
+            Image(artwork.imageName)
+                .resizable()
+                .frame(maxWidth: 300, maxHeight: 600)
+                .aspectRatio(contentMode: .fit)
+            Text("\(artwork.reaction) \(artwork.title)")
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .lineLimit(3)
+            Text(artwork.locationName)
+                .font(.subheadline)
+            Text("Artist: \(artwork.artist)")
+                .font(.subheadline)
+            Divider()
+            Text(artwork.description)
+                .multilineTextAlignment(.leading)
+                .lineLimit(20)
         }
-    }
-
-    private func setReaction(_ reaction: String, for item: Artwork) {
-        artworks = artworks.map { artwork in
-            guard artwork.id == item.id else { return artwork }
-            let updateArtwork = Artwork(
-                artist: item.artist,
-                description: item.description,
-                locationName: item.locationName,
-                discipline: item.discipline,
-                title: item.title,
-                imageName: item.imageName,
-                coordinate: item.coordinate,
-                reaction: reaction
-            )
-            return updateArtwork
-        }
+        .padding()
+        .navigationBarTitle(Text(artwork.title), displayMode: .inline)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        DetailView(artwork: artData[0])
     }
 }

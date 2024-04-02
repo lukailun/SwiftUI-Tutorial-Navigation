@@ -33,8 +33,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var hideVisited = false
     @State var artworks = artData
+    @State private var hideVisited = false
 
     var showArt: [Artwork] {
         hideVisited ? artworks.filter { $0.reaction.isEmpty } : artworks
@@ -43,18 +43,21 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List(showArt) { artwork in
-                Text("\(artwork.reaction) \(artwork.title)")
-                    .contextMenu {
-                        Button("Love it: 💕") {
-                            self.setReaction("💕", for: artwork)
+                NavigationLink(value: artwork) {
+                    Text("\(artwork.reaction) \(artwork.title)")
+                        .onAppear { artwork.load() }
+                        .contextMenu {
+                            Button("Love it: 💕") {
+                                self.setReaction("💕", for: artwork)
+                            }
+                            Button("Thoughtful: 🙏") {
+                                self.setReaction("🙏", for: artwork)
+                            }
+                            Button("Wow!: 🌟") {
+                                self.setReaction("🌟", for: artwork)
+                            }
                         }
-                        Button("Thoughtful: 🙏") {
-                            self.setReaction("🙏", for: artwork)
-                        }
-                        Button("Wow!: 🌟") {
-                            self.setReaction("🌟", for: artwork)
-                        }
-                    }
+                }
             }
             .navigationDestination(for: Artwork.self, destination: { artwork in
                 DetailView(artwork: artwork)

@@ -43,6 +43,10 @@ struct Artwork {
     let imageName: String
     let coordinate: CLLocationCoordinate2D
     var reaction: String
+
+    func load() {
+        print(">>>>> Downloading \(imageName) <<<<<")
+    }
 }
 
 extension Artwork: Hashable {
